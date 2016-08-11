@@ -18,14 +18,14 @@ router.post('/', function (req, res) {
   for (var i = 0; i < songs.length; i++) {
     if (song.title == songs[i].title && song.artist == songs[i].artist) {
       isDuplicate = true;
-      console.log('isDuplicate,' isDuplicate);
+      console.log('isDuplicate:', isDuplicate);
     }else{
     }
   }
 //if statement to check for blank value of title or artist; change isBlank to true if true;
   if (song.title == "" || song.artist == ""){
     isBlank = true;
-    console.log('isBlank', isBlank);
+    console.log('is blank:', isBlank);
   }else{
   }
 //if either condition are met, do not push to songs array;

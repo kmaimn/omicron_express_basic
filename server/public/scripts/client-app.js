@@ -6,7 +6,7 @@ $(document).ready(function () {
     event.preventDefault();
 
     var song = {}; // we will store our song here
-    var timeStamp = Date();
+    // var timeStamp = Date();
     // iterate over form fields
     // populate our song object with title and artist
     $.each($('#song-form').serializeArray(), function (i, field) {
