@@ -6,7 +6,7 @@ $(document).ready(function () {
     event.preventDefault();
 
     var song = {}; // we will store our song here
-
+    var timeStamp = Date();
     // iterate over form fields
     // populate our song object with title and artist
     $.each($('#song-form').serializeArray(), function (i, field) {
@@ -29,22 +29,25 @@ $(document).ready(function () {
         console.log('Attempted POST /songs, did not work');
       }
     });
+
+    $("#song-form").find("input[type=text]").val("");
+    $("#title").focus();
   });
 
-function getSongs() {
-  $.ajax({
-    type: 'GET',
-    url: '/songs',
-    success: function (songs) {
-      $('#song-list').empty();
-      songs.forEach(function (song) {
-        $('#song-list').append('<div>' + song.title + '-' + song.artist + '</div>');
-      });
-    },
+  function getSongs() {
+    $.ajax({
+      type: 'GET',
+      url: '/songs',
+      success: function (songs) {
+        $('#song-list').empty();
+        songs.forEach(function (song) {
+          $('#song-list').append('<div>' + song.title + ' by: ' + song.artist + ', added on: ' + song.timeStamp + '</div>');
+        });
+      },
 
-    error: function () {
-      console.log('GET /songs did not work');
-    },
-  });
-}
+      error: function () {
+        console.log('GET /songs did not work');
+      },
+    });
+  }
 });
